@@ -1,8 +1,6 @@
 # Arbitrium
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/arbitrium`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Arbitrium is a gem that gives a clear definition to service level classes and provides an object that will return the result. It is a plain-old-ruby gem that has no dependencies on Rails or any other framework.  Please stay tuned, there are more features to come!
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To use this gem simply call Arbitrium::Result.new and pass in a boolean whether the build failed or not, a corresponding message, and then the optional object.
 
 ## Development
 
@@ -33,4 +31,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Lollar/arbitrium.
-
