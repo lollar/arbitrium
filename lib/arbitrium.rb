@@ -1,6 +1,4 @@
-require 'arbitrium/version'
-require 'arbitrium/result'
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 module Arbitrium
-  # Your code goes here...
 end

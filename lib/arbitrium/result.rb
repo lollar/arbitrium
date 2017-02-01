@@ -1,12 +1,15 @@
 module Arbitrium
-  class Result < Struct.new(:success, :message, :result_object)
+  class Result
+    attr_reader :success, :message, :object
+
     def self.default_success(object = nil)
       new(true, 'Completed successfully.', object)
     end
 
-    def initialize(*)
-      super
-      self.result_object ||= nil
+    def initialize(success, message, object = nil)
+      @success = success
+      @message = message
+      @object  = object
     end
 
     def success?
@@ -15,10 +18,6 @@ module Arbitrium
 
     def failure?
       !success?
-    end
-
-    def object
-      self.result_object
     end
   end
 end
