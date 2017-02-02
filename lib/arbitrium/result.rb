@@ -14,12 +14,12 @@ module Arbitrium
       raise 'Error! Incorrect data types for arguments expected (boolean, string, object)!' unless valid?
     end
 
-    def success?
+    def successful?
       self.success
     end
 
-    def failure?
-      !success?
+    def failed?
+      !successful?
     end
 
     def valid?
