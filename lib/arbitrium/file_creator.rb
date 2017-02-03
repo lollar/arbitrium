@@ -23,7 +23,7 @@ module Arbitrium
       File.open(full_path_with_file, 'w') do |file|
         file.write(<<~EOF
           require 'arbitrium'
-          
+
           #{file_header}
           #{add_spaces}  def self.#{method_name}()
           #{add_spaces}    new().#{method_name}
@@ -67,11 +67,15 @@ module Arbitrium
     end
 
     def class_header
-      module_array.empty? ? "class #{class_name}" : "\n#{add_spaces(module_array.length)} class #{class_name}"
+      module_array.empty? ? "class #{class_name}" : "\n#{add_spaces(module_array.length)}  class #{class_name}"
     end
 
-    def add_spaces(value = module_array.length)
+    def add_spaces(value = modified_module_length)
       '  ' * value
+    end
+
+    def modified_module_length
+      module_array.empty? ? 0 : module_array.length + 1
     end
 
     def class_name
