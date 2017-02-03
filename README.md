@@ -22,13 +22,14 @@ Or install it yourself as:
 #### There are two different uses for this gem.
 ##### Command Line File/Class Creator
 
-Once you have the gem installed type `bundle exec arbitrium -h` to see the different options.
+Once you have the gem installed type `arbitrium -h` to see the different options.
 
 Example Usage:
 ```
-bundle exec arbitrium -f place/where/I/want/file.rb -m run -a Fake,Name
+arbitrium -f place/where/I/want/file.rb -m run -a Fake,Name
 # Results in the following file being created: [link.to.file]
-bundle exec arbitrium -f place/where/I/want/file.rb
+
+arbitrium -f place/where/I/want/file.rb
 # Results in the following file being created: [link.to.file]
 ```
 
