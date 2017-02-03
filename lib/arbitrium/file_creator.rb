@@ -6,9 +6,6 @@ module Arbitrium
       new(options).perform
     end
 
-    options = { pwd: Dir.pwd, file: nil, method_name: 'perform', module_array: [] }
-
-
     def initialize(options)
       @file_with_path = options[:file]
       @method_name    = options[:method_name]
@@ -41,7 +38,7 @@ module Arbitrium
           #{add_spaces}  end
 
           #{add_spaces}  private
-          #{add_spaces}  # define methods from perform here
+          #{add_spaces}  # define methods from #{method_name} here
           #{file_footer}
           end
         EOF
@@ -68,7 +65,7 @@ module Arbitrium
     end
 
     def class_header
-      module_array.empty? ? "class #{class_name}" : "\n#{add_spaces(module_array.length)} class #{class_name}"
+      module_array.empty? ? "class #{class_name}" : "#{add_spaces(module_array.length)} class #{class_name}"
     end
 
     def add_spaces(value = module_array.length)
