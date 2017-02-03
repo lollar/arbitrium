@@ -65,7 +65,7 @@ module Arbitrium
     end
 
     def class_header
-      module_array.empty? ? "class #{class_name}" : "#{add_spaces(module_array.length)} class #{class_name}"
+      module_array.empty? ? "class #{class_name}" : "\n#{add_spaces(module_array.length)} class #{class_name}"
     end
 
     def add_spaces(value = module_array.length)
@@ -81,7 +81,7 @@ module Arbitrium
     end
 
     def file_footer
-      module_array.map.with_index { |_, i| puts i; "#{add_spaces((module_array.length - i))}end" }.join("\n")
+      module_array.map.with_index { |_, i| "#{add_spaces((module_array.length - i))}end" }.join("\n")
     end
   end
 end
