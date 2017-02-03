@@ -46,6 +46,7 @@ Any deviation from data types will result in an error being raised.
 What a successful result may look like:
 ```
 result = Arbitrium::Result.new(user.save, user.errors.messages.join(', '), user)
+
 result.successful? # true
 result.failed?     # false
 result.message     # ''
@@ -62,9 +63,17 @@ result.object      # OptionalObject
 What a failed result may look like:
 ```
 result = Arbitrium::Result.new(false, 'Failed to successfully do my job')
+
 result.successful? # false
 result.message     # Failed to successfully do my job
 result.object      # nil
+
+# You can also call the class method default_failure which takes an optional object
+result = Arbitrium::Result.default_success
+
+result.failed?  # true
+result.message  # 'Failed to complete.'
+result.object   # nil
 ```
 
 ## Contributing

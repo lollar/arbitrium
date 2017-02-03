@@ -6,6 +6,10 @@ module Arbitrium
       new(true, 'Completed successfully.', object)
     end
 
+    def self.default_failure(object = nil)
+      new(false, 'Failed to complete.', object)
+    end
+
     def initialize(success, message, object = nil)
       @success = success
       @message = message
