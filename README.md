@@ -19,14 +19,53 @@ Or install it yourself as:
     $ gem install arbitrium
 
 ## Usage
+#### There are two different uses for this gem.
+##### Command Line File/Class Creator
 
-To use this gem simply call Arbitrium::Result.new and pass in a boolean whether the build failed or not, a corresponding message, and then the optional object.
+Once you have the gem installed type `bundle exec arbitrium -h` to see the different options.
 
-## Development
+Example Usage:
+```
+bundle exec arbitrium -f place/where/I/want/file.rb -m run -a Fake,Name
+# Results in the following file being created: [link.to.file]
+bundle exec arbitrium -f place/where/I/want/file.rb
+# Results in the following file being created: [link.to.file]
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+When using the command line generator make sure that you are always using the path from your current position in the file structure.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+##### Using Arbitrium::Result
+In your method that they want to have the Result object call `Arbitrium::Result.new()` and pass in your arguments.  
+
+Important things to note:
+  1. You must pass at least two arguments
+  2. The first argument must be a boolean type
+  3. The second argument must be a string type
+Any deviation from data types will result in an error being raised.
+
+What a successful result may look like:
+```
+result = Arbitrium::Result.new(user.save, user.errors.messages.join(', '), user)
+result.successful? # true
+result.failed?     # false
+result.message     # ''
+result.object      # User object
+
+# You can also call the class method default_success which takes an optional object
+result = Arbitrium::Result.default_success(OptionalObject)
+
+result.successful? # true
+result.message     # 'Completed Succesfully.'
+result.object      # OptionalObject
+```
+
+What a failed result may look like:
+```
+result = Arbitrium::Result.new(false, 'Failed to successfully do my job')
+result.successful? # false
+result.message     # Failed to successfully do my job
+result.object      # nil
+```
 
 ## Contributing
 
