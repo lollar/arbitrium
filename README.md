@@ -46,7 +46,7 @@ Any deviation from data types will result in an error being raised.
 
 What a successful result may look like:
 ```
-result = Arbitrium::Result.new(user.save, user.errors.messages.join(', '), user)
+result = Arbitrium::Result.new(user.save, 'Some yucky error', user)
 
 result.successful? # true
 result.failed?     # false
