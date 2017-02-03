@@ -10,7 +10,6 @@ module Arbitrium
 
 
     def initialize(options)
-      puts options
       @file_with_path = options[:file]
       @method_name    = options[:method_name]
       @pwd            = options[:pwd]
@@ -18,7 +17,6 @@ module Arbitrium
     end
 
     def perform
-      puts module_array
       puts create_file ? "Successfully created file in #{full_path_with_file}" : "Failed to create file!"
     end
 
@@ -62,7 +60,7 @@ module Arbitrium
     end
 
     def file_header
-      "#{module_header}\n#{class_header}"
+      "#{module_header}#{class_header}"
     end
 
     def module_header
