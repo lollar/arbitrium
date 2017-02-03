@@ -22,6 +22,8 @@ module Arbitrium
     def create_file
       File.open(full_path_with_file, 'w') do |file|
         file.write(<<~EOF
+          require 'arbitrium'
+          
           #{file_header}
           #{add_spaces}  def self.#{method_name}()
           #{add_spaces}    new().#{method_name}
