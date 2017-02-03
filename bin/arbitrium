@@ -1,5 +1,20 @@
 #!/usr/bin/env ruby
-require 'arbitrium'
-require 'arbitrium/class_creator'
+require_relative '../lib/arbitrium'
+require_relative '../lib/arbitrium/file_creator'
+require 'optparse'
 
-Arbitrium::ClassCreator.perform(ARGV[0], ARGV[1])
+options = { pwd: Dir.pwd, file: nil, method_name: 'perform', module_array: [] }
+
+parser =
+  OptionParser.new do |opts|
+    opts.banner = "Usage: arbitrium [options]"
+    opts.on('-fMANDATORY', '--file=MANDATORY', 'File with path from current directory') { |file| options[:file] = file }
+    opts.on('-m', '--method=OPTIONAL', 'Name of actionable method') { |method| options[:method_name] = method }
+    opts.on('-a', '--module_array=OPTIONAL', 'Modules that the class is nested under seperated by a comma') { |module_array| options[:module_array] = module_array.split(',').map(&:strip) }
+    opts.on('-h', '--help') { puts opts; exit }
+  end
+
+args = parser.order!(ARGV) {}
+parser.parse!(args)
+
+Arbitrium::FileCreator.perform(options)
