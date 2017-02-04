@@ -27,10 +27,56 @@ Once you have the gem installed type `arbitrium -h` to see the different options
 Example Usage:
 ```
 arbitrium -f place/where/I/want/file.rb -m run -a Fake,Name
-# Results in the following file being created: [link.to.file]
+# Results in the following file being created:
+
+require 'arbitrium'
+
+module Fake
+  module Name
+      class File
+        def self.run()
+          new().run
+        end
+
+        def initialize()
+          # insert instance variables here
+        end
+
+        def run
+          # define tasks needed to complete here
+          # next, define result of tasks
+          Arbitrium::Result.new()
+        end
+
+        private
+        # define methods from run here
+    end
+  end
+end
 
 arbitrium -f place/where/I/want/file.rb
-# Results in the following file being created: [link.to.file]
+# Results in the following file being created:
+
+require 'arbitrium'
+
+class File
+  def self.perform()
+    new().perform
+  end
+
+  def initialize()
+    # insert instance variables here
+  end
+
+  def perform
+    # define tasks needed to complete here
+    # next, define result of tasks
+    Arbitrium::Result.new()
+  end
+
+  private
+  # define methods from run here
+end
 ```
 
 When using the command line generator make sure that you are always using the path from your current position in the file structure.
@@ -79,4 +125,4 @@ result.object   # nil
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Lollar/arbitrium.
+Bug reports and pull requests are welcome on GitHub at https://github.com/lollar/arbitrium.
