@@ -67,7 +67,7 @@ module Arbitrium
     end
 
     def class_header
-      module_array.empty? ? "class #{class_name}" : "\n#{add_spaces(module_array.length)}  class #{class_name}"
+      module_array.empty? ? "class #{class_name}" : "\n#{add_spaces(module_array.length)}class #{class_name}"
     end
 
     def add_spaces(value = modified_module_length)
@@ -75,7 +75,7 @@ module Arbitrium
     end
 
     def modified_module_length
-      module_array.empty? ? 0 : module_array.length + 1
+      module_array.empty? ? 0 : module_array.length
     end
 
     def class_name
